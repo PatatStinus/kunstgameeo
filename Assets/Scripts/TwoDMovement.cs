@@ -40,7 +40,7 @@ public class TwoDMovement : MonoBehaviour
 			}
 		}
 
-		Move(-horizontalMove * Time.fixedDeltaTime, jump);
+		Move(horizontalMove * Time.fixedDeltaTime, jump);
 		jump = false;
 	}
 
