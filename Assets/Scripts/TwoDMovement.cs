@@ -18,10 +18,12 @@ public class TwoDMovement : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 	private float horizontalMove = 0f;
+	private Animator anim;
 
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		anim = GetComponent<Animator>();
 	}
 
 	private void FixedUpdate()
@@ -67,6 +69,11 @@ public class TwoDMovement : MonoBehaviour
 				// ... flip the player.
 				Flip();
 			}
+
+			if(move > 0 || move < 0)
+				anim.SetBool("Walking", true);
+			else if(move == 0)
+				anim.SetBool("Walking", false);
 		}
 		// If the player should jump...
 		if (m_Grounded && jump)
